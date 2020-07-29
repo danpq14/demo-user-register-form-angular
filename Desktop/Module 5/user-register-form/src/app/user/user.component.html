@@ -1,0 +1,76 @@
+<!--<p>this text will replace by Register Form!</p>-->
+<form [formGroup]="userForm" (ngSubmit)="register()">
+  <div class="form-group">
+    <label>Email address</label>
+    <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+         class="alert alert-danger">
+      <div *ngIf="email.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="email.errors.email">
+        Email is invalid.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password" id="pw" placeholder="Password">
+    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+         class="alert alert-danger">
+      <div *ngIf="password.errors.required">
+        Password is required.
+      </div>
+      <div *ngIf="password.errors.minlength">
+        Min length is 6.
+      </div>
+    </div>
+  </div>
+<!--  <div class="form-group">-->
+<!--    <label>Confirm Password</label>-->
+<!--    <input type="password" class="form-control" formControlName="password" id="confirmPw" placeholder="Confirm Password">-->
+<!--    <div *ngIf="">-->
+
+<!--    </div>-->
+<!--  </div>-->
+  <div class="form-group">
+    <label>Country</label>
+    <input type="text" class="form-control" formControlName="country" >
+  </div>
+  <div class="form-group">
+    <label>Age</label>
+    <input type="number" class="form-control" formControlName="age"  placeholder="Min 16, Max 50">
+    <div *ngIf="age.invalid && (age.dirty || age.touched)"
+         class="alert alert-danger">
+      <div *ngIf="age.errors.min">
+        Minimum is 16.
+      </div>
+      <div *ngIf="age.errors.max">
+        Maximum is 50.
+      </div>
+    </div>
+  </div>
+  <div>
+    <label>Gender</label><br>
+    <input type="radio" id="male" formControlName="gender" value="Male" >&nbsp;
+    <label for="male">Male</label>&nbsp;
+    <input type="radio" id="female" formControlName="gender" value="Female" >&nbsp;
+    <label for="female">Female</label>&nbsp;
+    <input type="radio" id="other" formControlName="gender" value="Other">&nbsp;
+    <label for="other">Other</label>&nbsp;
+  </div>
+  <div class="form-group">
+    <label>Phone</label>
+    <input type="text" class="form-control" formControlName="phone" >
+    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+         class="alert alert-danger">
+      <div *ngIf="phone.errors.required">
+        Phone is required.
+      </div>
+      <div *ngIf="phone.errors.pattern">
+        Phone is invalid.
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Submit</button>
+</form>
